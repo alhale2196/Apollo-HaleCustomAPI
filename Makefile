@@ -9,7 +9,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = ApolloHaleCustomApi
 
-ApolloHaleCustomApi_FILES = Tweak.xm CustomAPIViewController.m DefaultSubreddits.m UIWindow+Apollo.m fishhook.c
+ApolloHaleCustomApi_FILES = Tweak.xm CustomAPIViewController.m CustomAccountLoginViewController.m DefaultSubreddits.m UIWindow+Apollo.m fishhook.c
 ApolloHaleCustomApi_FRAMEWORKS = UIKit
 ApolloHaleCustomApi_CFLAGS = -fobjc-arc -Wno-unguarded-availability-new -Wno-module-import-in-extern-c
 
