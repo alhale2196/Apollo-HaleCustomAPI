@@ -152,10 +152,10 @@ typedef NS_ENUM(NSInteger, Tag) {
         // Trim textField.text whitespaces
         textField.text = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         sRedditClientId = textField.text;
-        if (sRedditClientId == "") {
+        if (sRedditClientId == @"") {
             self.navigationItem.rightBarButtonItem.enabled = NO;
         } else {
-            if (sImgurClientId == "") {
+            if (sImgurClientId == @"") {
                 self.navigationItem.rightBarButtonItem.enabled = NO;
             } else {
                 self.navigationItem.rightBarButtonItem.enabled = YES;
@@ -164,10 +164,10 @@ typedef NS_ENUM(NSInteger, Tag) {
     } else if (textField.tag == TagImgurClientId) {
         textField.text = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         sImgurClientId = textField.text;
-        if (sImgurClientId == "") {
+        if (sImgurClientId == @"") {
             self.navigationItem.rightBarButtonItem.enabled = NO;
         } else {
-            if (sRedditClientId == "") {
+            if (sRedditClientId == @"") {
                 self.navigationItem.rightBarButtonItem.enabled = NO;
             } else {
                 self.navigationItem.rightBarButtonItem.enabled = YES;
