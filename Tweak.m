@@ -3,6 +3,7 @@
 
 #import "fishhook.h"
 #import "CustomAPIViewController.h"
+#import "CustomAccountLoginViewController.h"
 #import "Tweak.h"
 #import "UIWindow+Apollo.h"
 #import "UserDefaultConstants.h"
@@ -798,6 +799,23 @@ static void TryResolveShareUrl(NSString *urlString, void (^successHandler)(NSStr
 
 %end
 
+@interface ProfileViewController : UIViewController
+@end
+
+%hook ProfileViewController
+
+- (void)viewDidLoad {
+    %orig;
+    ((ProfileViewController *)self).navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Custom Login" style: UIBarButtonItemStylePlain target:self action:@selector(showCustomLoginViewController)];
+}
+
+%new - (void)showCustomLoginViewController {
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[[CustomAccountLoginViewController alloc] init]];
+    [self presentViewController:navController animated:YES completion:nil];
+}
+
+%end
+
 static void initializePostSnapshots(NSData *data) {
     NSError *error = nil;
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
@@ -898,6 +916,7 @@ static void initializeRandomSources() {
     sTrendingSubredditsLimit = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:UDKeyTrendingSubredditsLimit];
 
     %init(SettingsGeneralViewController=objc_getClass("Apollo.SettingsGeneralViewController"), ApolloTabBarController=objc_getClass("Apollo.ApolloTabBarController"));
+    %init(ProfileViewController=objc_getClass("Apollo.ProfileViewController"), ApolloTabBarController=objc_getClass("Apollo.ApolloTabBarController"));
 
     // Suppress wallpaper prompt
     NSDate *dateIn90d = [NSDate dateWithTimeIntervalSinceNow:60*60*24*90];
@@ -935,20 +954,20 @@ static void initializeRandomSources() {
             UITabBarController *tabBarController = (UITabBarController *)mainWindow.rootViewController;
             // Navigate to Settings tab
             tabBarController.selectedViewController = [tabBarController.viewControllers lastObject];
-            UINavigationController *settingsNavController = (UINavigationController *) tabBarController.selectedViewController;
+            UINavigationController *profileNavController = (UINavigationController *) tabBarController.selectedViewController;
             
             // Navigate to General Settings
-            UIViewController *settingsGeneralViewController = [[objc_getClass("Apollo.SettingsGeneralViewController") alloc] init];
+            UIViewController *profileViewController = [[objc_getClass("Apollo.ProfileViewController") alloc] init];
 
             [CATransaction begin];
             [CATransaction setCompletionBlock:^{
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     // Invoke Custom API button
-                    UIBarButtonItem *rightBarButtonItem = settingsGeneralViewController.navigationItem.rightBarButtonItem;
-                    [UIApplication.sharedApplication sendAction:rightBarButtonItem.action to:rightBarButtonItem.target from:settingsGeneralViewController forEvent:nil];
+                    UIBarButtonItem *rightBarButtonItem = profileViewController.navigationItem.rightBarButtonItem;
+                    [UIApplication.sharedApplication sendAction:rightBarButtonItem.action to:rightBarButtonItem.target from:profileViewController forEvent:nil];
                 });
             }];
-            [settingsNavController pushViewController:settingsGeneralViewController animated:YES];
+            [profileNavController pushViewController:profileViewController animated:YES];
             [CATransaction commit];
         });
     }
