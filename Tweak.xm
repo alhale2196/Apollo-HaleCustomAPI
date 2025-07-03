@@ -915,8 +915,7 @@ static void initializeRandomSources() {
     sTrendingSubredditsSource = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:UDKeyTrendingSubredditsSource];
     sTrendingSubredditsLimit = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:UDKeyTrendingSubredditsLimit];
 
-    %init(SettingsGeneralViewController=objc_getClass("Apollo.SettingsGeneralViewController"), ApolloTabBarController=objc_getClass("Apollo.ApolloTabBarController"));
-    %init(ProfileViewController=objc_getClass("Apollo.ProfileViewController"), ApolloTabBarController=objc_getClass("Apollo.ApolloTabBarController"));
+    %init(SettingsGeneralViewController=objc_getClass("Apollo.SettingsGeneralViewController"), ProfileViewController=objc_getClass("Apollo.ProfileViewController"), ApolloTabBarController=objc_getClass("Apollo.ApolloTabBarController"));
 
     // Suppress wallpaper prompt
     NSDate *dateIn90d = [NSDate dateWithTimeIntervalSinceNow:60*60*24*90];
