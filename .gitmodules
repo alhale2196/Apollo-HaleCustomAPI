@@ -1,7 +1,6 @@
 [submodule "Tweaks/FLEXing"]
-    path = Tweaks/FLEXing
-    url = https://github.com/PoomSmart/FLEXing
-    branch = rootless
+	path = Tweaks/FLEXing
+	url = https://github.com/PoomSmart/FLEXing
 [submodule "ffmpeg-kit"]
 	path = ffmpeg-kit
 	url = https://github.com/alhale2196/ffmpeg-kit-ios
