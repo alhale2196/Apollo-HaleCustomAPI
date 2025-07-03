@@ -1,0 +1,6 @@
+.theos
+*.ipa
+*.zip
+Resources/
+packages/
+Version.h

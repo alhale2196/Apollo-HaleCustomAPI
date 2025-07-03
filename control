@@ -1,0 +1,9 @@
+Package: com.alhale2196.apollo-halecustomapi
+Name: Apollo-HaleCustomApi
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Apollo for Reddit tweak with in-app configurable API keys and multi-account support
+Maintainer: alhale2196
+Author: alhale2196
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
