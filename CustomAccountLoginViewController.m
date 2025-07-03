@@ -54,8 +54,8 @@ typedef NS_ENUM(NSInteger, Tag) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }]];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone primaryAction:[UIAction actionWithHandler:^(UIAction * action) {
-        [[NSUserDefaults standardUserDefaults] setValue:sRedditClientId forKey:UDKeyRedditClientId];
-        [[NSUserDefaults standardUserDefaults] setValue:sImgurClientId forKey:UDKeyImgurClientId];
+        [[NSUserDefaults standardUserDefaults] setValue:sNewAccountRedditClientId forKey:UDKeyNewAccountRedditClientId];
+        [[NSUserDefaults standardUserDefaults] setValue:sNewAccountImgurClientId forKey:UDKeyNewAccountImgurClientId];
     }]];
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
