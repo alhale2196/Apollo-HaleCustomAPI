@@ -53,7 +53,10 @@ typedef NS_ENUM(NSInteger, Tag) {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel primaryAction:[UIAction actionWithHandler:^(UIAction * action) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }]];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone primaryAction:sendToRedditToLogin];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone primaryAction:[UIAction actionWithHandler:^(UIAction * action) {
+        [[NSUserDefaults standardUserDefaults] setValue:sRedditClientId forKey:UDKeyRedditClientId];
+        [[NSUserDefaults standardUserDefaults] setValue:sImgurClientId forKey:UDKeyImgurClientId];
+    }]];
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];
@@ -174,11 +177,6 @@ typedef NS_ENUM(NSInteger, Tag) {
             } 
         }
     }
-}
-
-- (func)sendToRedditToLogin {
-    [[NSUserDefaults standardUserDefaults] setValue:sRedditClientId forKey:UDKeyRedditClientId];
-    [[NSUserDefaults standardUserDefaults] setValue:sImgurClientId forKey:UDKeyImgurClientId];
 }
 
 @end
