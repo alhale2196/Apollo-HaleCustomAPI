@@ -176,7 +176,7 @@ typedef NS_ENUM(NSInteger, Tag) {
     }
 }
 
-- (void)sendToRedditToLogin:(UIBarButtonItem *)sender {
+- (func)sendToRedditToLogin {
     [[NSUserDefaults standardUserDefaults] setValue:sRedditClientId forKey:UDKeyRedditClientId];
     [[NSUserDefaults standardUserDefaults] setValue:sImgurClientId forKey:UDKeyImgurClientId];
 }
