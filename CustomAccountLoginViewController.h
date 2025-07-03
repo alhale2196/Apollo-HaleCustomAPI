@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface CustomAccountViewController : UIViewController <UITextFieldDelegate>
+@interface CustomAccountLoginViewController : UIViewController <UITextFieldDelegate>
 @end
 
 NSString *sRedditClientId;
