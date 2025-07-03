@@ -3,5 +3,5 @@
 @interface CustomAccountLoginViewController : UIViewController <UITextFieldDelegate>
 @end
 
-NSString *sRedditClientId;
-NSString *sImgurClientId;
+NSString *sNewAccountRedditClientId;
+NSString *sNewAccountImgurClientId;

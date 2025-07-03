@@ -85,10 +85,10 @@ typedef NS_ENUM(NSInteger, Tag) {
         [stackView.bottomAnchor constraintEqualToAnchor:scrollView.bottomAnchor constant:-20],
     ]];
 
-    UIStackView *redditStackView = [self createLabeledStackViewWithLabelText:@"Reddit API Key:" placeholder:@"Reddit API Key" text:sRedditClientId tag:TagRedditClientId];
+    UIStackView *redditStackView = [self createLabeledStackViewWithLabelText:@"Reddit API Key:" placeholder:@"Reddit API Key" text:sNewAccountRedditClientId tag:TagRedditClientId];
     [stackView addArrangedSubview:redditStackView];
 
-    UIStackView *imgurStackView = [self createLabeledStackViewWithLabelText:@"Imgur API Key:" placeholder:@"Imgur API Key" text:sImgurClientId tag:TagImgurClientId];
+    UIStackView *imgurStackView = [self createLabeledStackViewWithLabelText:@"Imgur API Key:" placeholder:@"Imgur API Key" text:sNewAccountImgurClientId tag:TagImgurClientId];
     [stackView addArrangedSubview:imgurStackView];
 
     UIButton *websiteButton = [UIButton systemButtonWithPrimaryAction:[UIAction actionWithTitle:@"Reddit API Website" image:nil identifier:nil handler:^(UIAction * action) {
@@ -154,11 +154,11 @@ typedef NS_ENUM(NSInteger, Tag) {
     if (textField.tag == TagRedditClientId) {
         // Trim textField.text whitespaces
         textField.text = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        sRedditClientId = textField.text;
-        if ([sRedditClientId isEqualToString:@""]) {
+        sNewAccountRedditClientId = textField.text;
+        if ([sNewAccountRedditClientId isEqualToString:@""]) {
             self.navigationItem.rightBarButtonItem.enabled = NO;
         } else {
-            if ([sImgurClientId isEqualToString:@""]) {
+            if ([sNewAccountImgurClientId isEqualToString:@""]) {
                 self.navigationItem.rightBarButtonItem.enabled = NO;
             } else {
                 self.navigationItem.rightBarButtonItem.enabled = YES;
@@ -166,11 +166,11 @@ typedef NS_ENUM(NSInteger, Tag) {
         }
     } else if (textField.tag == TagImgurClientId) {
         textField.text = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        sImgurClientId = textField.text;
-        if ([sImgurClientId isEqualToString:@""]) {
+        sNewAccountImgurClientId = textField.text;
+        if ([sNewAccountImgurClientId isEqualToString:@""]) {
             self.navigationItem.rightBarButtonItem.enabled = NO;
         } else {
-            if ([sRedditClientId isEqualToString:@""]) {
+            if ([sNewAccountRedditClientId isEqualToString:@""]) {
                 self.navigationItem.rightBarButtonItem.enabled = NO;
             } else {
                 self.navigationItem.rightBarButtonItem.enabled = YES;
